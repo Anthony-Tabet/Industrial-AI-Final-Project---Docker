@@ -1,0 +1,14 @@
+matplotlib==3.8.3
+opencv-python==4.9.0.80
+pandas==2.2.1
+pillow==10.2.0
+psutil==5.9.0
+py-cpuinfo==9.0.0
+pyyaml==6.0.1
+requests==2.31.0
+scipy==1.12.0
+seaborn==0.13.2
+thop== 0.1.1-2209072238
+torch==2.2.1+cu118
+torchvision==0.17.1+cu118
+tqdm==4.66.2
