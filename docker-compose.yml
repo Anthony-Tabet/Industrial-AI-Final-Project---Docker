@@ -17,9 +17,9 @@ services:
       - api-network
     environment:
       - PORT=5000
-      - FACE_DETECTION_URL=http://host.docker.internal:8001/detect_faces
-      - GENDER_DETECTION_URL=http://host.docker.internal:8002/detect_gender
-      - AGE_DETECTION_URL=http://host.docker.internal:8003/detect_age
+      - MERGED_CRACK_DETECTION_URL=http://host.docker.internal:5001/MergedCrackDetection
+      - ROAD_CRACK_DETECTION_URL=http://host.docker.internal:5002/RoadCrackDetection
+      - ROAD_TRAFFIC_SIGN_DETECTION_URL=http://host.docker.internal:5003/TrafficSignDetection
     restart: always
 
   detect-face-api:
@@ -66,5 +66,5 @@ services:
     environment:
       - PORT=5003
     restart: always
-    
+
 
