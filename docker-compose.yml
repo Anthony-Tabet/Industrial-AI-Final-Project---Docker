@@ -1,23 +1,70 @@
 version: '3'
+networks:
+  api-network:
+    driver: bridge
 
 services:
-  road_crack_detection:
+  detect-gender-for-face-api:
+    stdin_open: true
+    tty: true
     build:
-      context: ./road_crack_detection
+      context: ./business_logic
+      dockerfile: Dockerfile
+    command: python app.py
     ports:
       - "5000:5000"
-    restart: always
-  
-  road_potholes_detection:
-    build:
-      context: ./road_potholes_detection
-    ports:
-      - "5001:5001"
+    networks:
+      - api-network
+    environment:
+      - PORT=5000
+      - FACE_DETECTION_URL=http://host.docker.internal:8001/detect_faces
+      - GENDER_DETECTION_URL=http://host.docker.internal:8002/detect_gender
+      - AGE_DETECTION_URL=http://host.docker.internal:8003/detect_age
     restart: always
 
-  merged_crack_detection:
+  detect-face-api:
+    stdin_open: true
+    tty: true
     build:
       context: ./merged_crack_detection
+      dockerfile: Dockerfile
+    command: python app.py
+    ports:
+      - "5001:5001"
+    networks:
+      - api-network
+    environment:
+      - PORT=5001
+    restart: always
+
+  detect-gender-api:
+    stdin_open: true
+    tty: true
+    build:
+      context: ./road_crack_detection
+      dockerfile: Dockerfile
+    command: python app.py
     ports:
       - "5002:5002"
+    networks:
+      - api-network
+    environment:
+      - PORT=5002
     restart: always
+
+  detect-age-api:
+    stdin_open: true
+    tty: true
+    build:
+      context: ./road_traffic_sign_detection
+      dockerfile: Dockerfile
+    command: python app.py
+    ports:
+      - "5003:5003"
+    networks:
+      - api-network
+    environment:
+      - PORT=5003
+    restart: always
+    
+
