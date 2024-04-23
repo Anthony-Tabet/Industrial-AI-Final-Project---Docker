@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Traffic Signs Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #45a049;
+        }
+
+        button[type="submit"] {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+
+        .video-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+
+        video {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Road Traffic Signs Detection</h1>
+    <form id="uploadForm" action="/TrafficSignDetection" method="post" enctype="multipart/form-data">
+        <label for="file-upload" class="custom-file-upload">
+            Upload Video
+        </label>
+        <input id="file-upload" type="file" name="file" accept="video/*" required>
+        <button type="submit">Submit</button>
+    </form>
+    <video id="uploadedVideo" controls style="display: none;"></video>
+    {% if video_path %}
+        <a class="video-link" href="/download_video?video_path={{ video_path }}">Download Processed Video</a>
+    {% endif %}
+
+    <script>
+        const fileUpload = document.getElementById('file-upload');
+        const uploadedVideo = document.getElementById('uploadedVideo');
+
+        fileUpload.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    uploadedVideo.src = event.target.result;
+                    uploadedVideo.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
