@@ -40,26 +40,45 @@
 <body>
     <div class="container">
         <h1>Object Detection</h1>
-        <button onclick="roadCrackDetection()">Road Crack Detection</button>
-        <button onclick="buildingCrackDetection()">Building Crack Detection</button>
-        <button onclick="roadTrafficSignDetection()">Road Traffic Sign Detection</button>
+        <button id="roadCrackButton" value="roadCrack">Road Crack Detection</button>
+        <button id="buildingCrackButton" value="buildingCrack">Building Crack Detection</button>
+        <button id="trafficSignButton" value="trafficSign">Road Traffic Sign Detection</button>
     </div>
 
-    <!-- You can add scripts here for functionality -->
+    <!-- Your JavaScript code here -->
     <script>
-        function roadCrackDetection() {
-            // Add your code for road crack detection
-            alert('Road Crack Detection functionality coming soon!');
-        }
+        document.getElementById("roadCrackButton").addEventListener("click", function() {
+            sendButtonClickEvent("roadCrack");
+        });
 
-        function buildingCrackDetection() {
-            // Add your code for building crack detection
-            alert('Building Crack Detection functionality coming soon!');
-        }
+        document.getElementById("buildingCrackButton").addEventListener("click", function() {
+            sendButtonClickEvent("buildingCrack");
+        });
 
-        function roadTrafficSignDetection() {
-            // Add your code for road traffic sign detection
-            alert('Road Traffic Sign Detection functionality coming soon!');
+        document.getElementById("trafficSignButton").addEventListener("click", function() {
+            sendButtonClickEvent("trafficSign");
+        });
+
+        function sendButtonClickEvent(buttonValue) {
+            fetch('/button_clicked', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ buttonClicked: buttonValue })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
         }
     </script>
 </body>

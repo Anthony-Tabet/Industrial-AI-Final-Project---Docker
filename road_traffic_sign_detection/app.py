@@ -46,4 +46,4 @@ def download_video():
     return send_file(video_path, as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=True, host = "127.0.0.1", port = 5001)
+    app.run(debug=True,host = "127.0.0.1", port = os.getenv("PORT"))
