@@ -52,7 +52,7 @@ services:
       - PORT=5002
     restart: always
 
-  detect-road-traffice-signs-api:
+  detect-road-traffic-signs-api:
     stdin_open: true
     tty: true
     build:
