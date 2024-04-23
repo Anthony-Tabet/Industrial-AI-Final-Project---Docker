@@ -7,7 +7,7 @@ import time
 app = Flask(__name__)
 
 def perform_object_detection(video_path):
-    model = YOLO(r'C:\Users\Antho\OneDrive\Desktop\Industrial AI Final Project - Docker\Merged Crack Detetion\model\best.pt')
+    model = YOLO(r'C:\Users\Antho\OneDrive\Desktop\Industrial AI Final Project - Docker\merged_crack_detection\model\building_crack_detection.pt')
     model.to("cuda")
     current_time = time.strftime("%Y%m%d_%H%M%S")  # Get current timestamp
     name_dir = "MergedCrack_Detection_"+ current_time
