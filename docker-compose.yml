@@ -4,7 +4,7 @@ networks:
     driver: bridge
 
 services:
-  detect-gender-for-face-api:
+  detect-cracks-signs:
     stdin_open: true
     tty: true
     build:
@@ -22,7 +22,7 @@ services:
       - ROAD_TRAFFIC_SIGN_DETECTION_URL=http://host.docker.internal:5003/TrafficSignDetection
     restart: always
 
-  detect-face-api:
+  detect-building-cracks-api:
     stdin_open: true
     tty: true
     build:
@@ -37,7 +37,7 @@ services:
       - PORT=5001
     restart: always
 
-  detect-gender-api:
+  detect-road-cracks-api:
     stdin_open: true
     tty: true
     build:
@@ -52,7 +52,7 @@ services:
       - PORT=5002
     restart: always
 
-  detect-age-api:
+  detect-road-traffice-signs-api:
     stdin_open: true
     tty: true
     build:
