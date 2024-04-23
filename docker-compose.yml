@@ -17,7 +17,7 @@ services:
       - api-network
     environment:
       - PORT=5000
-      - MERGED_CRACK_DETECTION_URL=http://host.docker.internal:5001/MergedCrackDetection
+      - MERGED_CRACK_DETECTION_URL=http://host.docker.internal:5001/BuildingCrackDetection
       - ROAD_CRACK_DETECTION_URL=http://host.docker.internal:5002/RoadCrackDetection
       - ROAD_TRAFFIC_SIGN_DETECTION_URL=http://host.docker.internal:5003/TrafficSignDetection
     restart: always
@@ -26,7 +26,7 @@ services:
     stdin_open: true
     tty: true
     build:
-      context: ./merged_crack_detection
+      context: ./building_crack_detection
       dockerfile: Dockerfile
     command: python app.py
     ports:

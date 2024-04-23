@@ -10,12 +10,12 @@ def perform_object_detection(video_path):
     model = YOLO(r'C:\Users\Antho\OneDrive\Desktop\Industrial AI Final Project - Docker\merged_crack_detection\model\building_crack_detection.pt')
     model.to("cuda")
     current_time = time.strftime("%Y%m%d_%H%M%S")  # Get current timestamp
-    name_dir = "MergedCrack_Detection_"+ current_time
+    name_dir = "Building_Crack_Detection_"+ current_time
     model.predict(video_path,  conf=0.25, name=name_dir, save=True)
     return name_dir
 
 # Route to upload video and display the processed video
-@app.route('/MergedCrackDetection', methods=['GET', 'POST'])
+@app.route('/BuildingCrackDetection', methods=['GET', 'POST'])
 def upload_video():
     if request.method == 'POST':
         # Check if the POST request has the file part
