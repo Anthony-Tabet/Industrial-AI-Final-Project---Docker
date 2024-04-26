@@ -1,16 +1,16 @@
 from flask import Flask, request, render_template, send_file, Response
 from ultralytics import YOLO
-import cv2
-#import torch
-import numpy as np
+# import cv2
+import torch
+# import numpy as np
 import os
 import time
 app = Flask(__name__)
 
 def perform_object_detection(video_path):
     model = YOLO(r'C:\Users\Antho\OneDrive\Desktop\Industrial AI Final Project - Docker\merged_crack_detection\model\building_crack_detection.pt')
-    #device = "cuda" if torch.cuda.is_available() else "cpu"
-    #model = model.to(device)
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = model.to(device)
     current_time = time.strftime("%Y%m%d_%H%M%S")  # Get current timestamp
     name_dir = "Building_Crack_Detection_"+ current_time
     model.predict(video_path,  conf=0.25, name=name_dir, save=True)
