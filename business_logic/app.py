@@ -31,9 +31,11 @@
 #         return jsonify(error='Invalid button click event'), 400
 
 from flask import Flask, render_template, redirect, url_for
+from flask_cors import CORS
 import os
 
 app = Flask(__name__, template_folder="templates")
+CORS(app)
 
 @app.route('/services', methods=['GET'])
 def index():
