@@ -19,9 +19,6 @@ RUN pip install -r requirements.txt
 # Copy your application code
 COPY . .
 
-# Copy the model file into the container
-COPY COPY ./model/building_crack_detection.pt /app/model/
-
 # Expose any necessary ports
 EXPOSE 5001
 
