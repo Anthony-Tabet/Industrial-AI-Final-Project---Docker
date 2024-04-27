@@ -16,6 +16,9 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install -r requirements.txt
 
+# Copy the model file into the container
+COPY ./road_traffic_sign_detection/model/ /app/road_traffic_sign_detection/model/
+
 # Copy your application code
 COPY . /app
 
