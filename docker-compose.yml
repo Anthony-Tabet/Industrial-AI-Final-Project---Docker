@@ -35,6 +35,9 @@ services:
       - api-network
     environment:
       - PORT=5001
+    volumes:
+      - uploaded_videos_volume:/app/building_crack_detection/static
+      - ./building_crack_detection/model:/app/building_crack_detection/model        
     restart: always
     
   detect-road-cracks-api:
@@ -50,6 +53,9 @@ services:
       - api-network
     environment:
       - PORT=5002
+    volumes:
+      - uploaded_videos_volume:/app/road_crack_detection/static
+      - ./road_crack_detection/model:/app/road_crack_detection/model  
     restart: always
 
   detect-road-traffic-signs-api:
