@@ -8,7 +8,8 @@ def index():
 
 @app.route('/services', methods=['GET', 'POST'])
 def handle_button_click():
-    if request.headers['Content-Type'] != 'application/json':
+    content_type = request.headers.get('Content-Type')
+    if content_type is None or content_type != 'application/json':
         return jsonify(error='Unsupported Media Type'), 415
 
     data = request.json
@@ -28,6 +29,7 @@ def handle_button_click():
         return redirect(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))
     else:
         return jsonify(error='Invalid button click event'), 400
+
 
 
 if __name__ == "__main__":
