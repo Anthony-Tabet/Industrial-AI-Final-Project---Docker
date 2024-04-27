@@ -20,7 +20,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Copy the model file into the container
-COPY C:\Users\Antho\OneDrive\Desktop\Industrial AI Final Project - Docker\building_crack_detection\model\building_crack_detection.pt /app/model/
+COPY COPY ./model/building_crack_detection.pt /app/model/
 
 # Expose any necessary ports
 EXPOSE 5001
