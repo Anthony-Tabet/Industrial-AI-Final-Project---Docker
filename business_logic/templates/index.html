@@ -83,20 +83,20 @@
     </script> -->
     <script>
         document.getElementById("roadCrackButton").addEventListener("click", function() {
-            sendButtonClickEvent("road_crack");
+            sendButtonClickEvent("road_crack_detection");
         });
     
         document.getElementById("buildingCrackButton").addEventListener("click", function() {
-            sendButtonClickEvent("building_crack");
+            sendButtonClickEvent("building_crack_detection");
         });
     
         document.getElementById("trafficSignButton").addEventListener("click", function() {
-            sendButtonClickEvent("traffic_sign");
+            sendButtonClickEvent("traffic_sign_detection");
         });
     
-        function sendButtonClickEvent(buttonValue) {
-            fetch('/' + buttonValue + '_detection', {  // Changed endpoint to match Flask routes
-                method: 'GET'  // Changed method to GET since we're redirecting
+        function sendButtonClickEvent(endpoint) {
+            fetch('/' + endpoint, {  
+                method: 'GET'  
             })
             .then(response => {
                 if (!response.ok) {
@@ -111,6 +111,7 @@
                 console.error('There was a problem with the fetch operation:', error);
             });
         }
-    </script>    
+    </script>
+      
 </body>
 </html>
