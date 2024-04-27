@@ -17,9 +17,9 @@ services:
       - api-network
     environment:
       - PORT=5000
-      - MERGED_CRACK_DETECTION_URL=http://host.docker.internal:5001/BuildingCrackDetection
-      - ROAD_CRACK_DETECTION_URL=http://host.docker.internal:5002/RoadCrackDetection
-      - ROAD_TRAFFIC_SIGN_DETECTION_URL=http://host.docker.internal:5003/TrafficSignDetection
+      - MERGED_CRACK_DETECTION_URL=http://127.0.0.1:5001/BuildingCrackDetection
+      - ROAD_CRACK_DETECTION_URL=http://127.0.0.1:5002/RoadCrackDetection
+      - ROAD_TRAFFIC_SIGN_DETECTION_URL=http://127.0.0.1:5003/TrafficSignDetection
     restart: always
 
   detect-building-cracks-api:
