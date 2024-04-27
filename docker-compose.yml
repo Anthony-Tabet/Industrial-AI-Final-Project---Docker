@@ -62,7 +62,7 @@ services:
     stdin_open: true
     tty: true
     build:
-      context: ./road_traffic_sign_detection
+      context: ./traffic_sign_detection
       dockerfile: Dockerfile
     command: python app.py
     ports:
