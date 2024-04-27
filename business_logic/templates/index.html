@@ -46,7 +46,7 @@
     </div>
 
     <!-- Your JavaScript code here -->
-    <script>
+    <!-- <script>
         // document.getElementById("roadCrackButton").addEventListener("click", function() {
         //     sendButtonClickEvent("roadCrack");
         // });
@@ -80,36 +80,37 @@
         //         console.error('There was a problem with the fetch operation:', error);
         //     });
         // }
+    </script> -->
+    <script>
         document.getElementById("roadCrackButton").addEventListener("click", function() {
-    sendButtonClickEvent("roadCrack");
-});
-
-document.getElementById("buildingCrackButton").addEventListener("click", function() {
-    sendButtonClickEvent("buildingCrack");
-});
-
-document.getElementById("trafficSignButton").addEventListener("click", function() {
-    sendButtonClickEvent("trafficSign");
-});
-
-function sendButtonClickEvent(buttonValue) {
-    fetch('/' + buttonValue + '_detection', {  // Changed endpoint to match Flask routes
-        method: 'GET'  // Changed method to GET since we're redirecting
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+            sendButtonClickEvent("road_crack");
+        });
+    
+        document.getElementById("buildingCrackButton").addEventListener("click", function() {
+            sendButtonClickEvent("building_crack");
+        });
+    
+        document.getElementById("trafficSignButton").addEventListener("click", function() {
+            sendButtonClickEvent("traffic_sign");
+        });
+    
+        function sendButtonClickEvent(buttonValue) {
+            fetch('/' + buttonValue + '_detection', {  // Changed endpoint to match Flask routes
+                method: 'GET'  // Changed method to GET since we're redirecting
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Response from server:', data);
-    })
-    .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-    });
-}
-
-    </script>
+    </script>    
 </body>
 </html>
