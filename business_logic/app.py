@@ -45,19 +45,19 @@ def index():
 def road_crack_detection():
     print("Road crack detection button clicked")
     print(os.getenv("ROAD_CRACK_DETECTION_URL"))  # Print the value of ROAD_CRACK_DETECTION_URL
-    return redirect(url_for('road_crack_detection.index'))
+    return redirect(os.getenv("ROAD_CRACK_DETECTION_URL"))
 
 @app.route('/road_traffic_sign_detection', methods=['GET'])
 def road_sign_detection():
     print("Road traffic sign detection button clicked")
     print(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))  # Print the value of ROAD_TRAFFIC_SIGN_DETECTION_URL
-    return redirect(url_for('road_traffic_sign_detection.index'))
+    return redirect(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))
 
 @app.route('/building_crack_detection', methods=['GET'])
 def building_crack_detection():
     print("Building Crack detection button clicked")
     print(os.getenv("MERGED_CRACK_DETECTION_URL"))  # Print the value of MERGED_CRACK_DETECTION_URL
-    return redirect(url_for('building_crack_detection.index'))
+    return redirect(os.getenv("MERGED_CRACK_DETECTION_URL"))
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=os.getenv("PORT"))
