@@ -47,7 +47,7 @@ def road_crack_detection():
     print(os.getenv("ROAD_CRACK_DETECTION_URL"))  # Print the value of ROAD_CRACK_DETECTION_URL
     return redirect(os.getenv("ROAD_CRACK_DETECTION_URL"))
 
-@app.route('/traffic_sign_detection', methods=['GET'])
+@app.route('/road_traffic_sign_detection', methods=['GET'])
 def road_sign_detection():
     print("Road traffic sign detection button clicked")
     print(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))  # Print the value of ROAD_TRAFFIC_SIGN_DETECTION_URL
