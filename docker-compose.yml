@@ -36,7 +36,7 @@ services:
     environment:
       - PORT=5001
     volumes:
-      - .building_crack_detection/model:/app/model
+      - ./building_crack_detection/model:/app/model
     restart: always
     
 
@@ -54,6 +54,8 @@ services:
       - api-network
     environment:
       - PORT=5002
+    volumes:
+      - ./road_crack_detection/model:/app/model
     restart: always
 
   detect-road-traffic-signs-api:
@@ -69,6 +71,8 @@ services:
       - api-network
     environment:
       - PORT=5003
+    volumes:
+      - ./road_traffic_sign_detection/model:/app/model
     restart: always
 
 
