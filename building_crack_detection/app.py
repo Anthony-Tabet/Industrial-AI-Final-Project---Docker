@@ -29,7 +29,7 @@ def upload_video():
             return render_template('index.html', message='No selected file')
         if file:
             # Save the uploaded video
-            video_path = "static/uploaded_video.mp4"
+            video_path = "building_crack_detection/static/uploaded_video.mp4"
             file.save(video_path)
             # Perform object detection
             dir_name = perform_object_detection(video_path)
