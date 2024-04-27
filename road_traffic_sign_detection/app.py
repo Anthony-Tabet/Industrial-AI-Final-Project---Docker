@@ -29,6 +29,7 @@ def upload_video():
             return render_template('index.html', message='No selected file')
         if file:
             # Save the uploaded video
+            print(os.getcwd())
             video_path = "road_traffic_sign_detection/static/uploaded_video.mp4"
             file.save(video_path)
             # Perform object detection
