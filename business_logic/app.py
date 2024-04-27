@@ -30,30 +30,50 @@
 #     else:
 #         return jsonify(error='Invalid button click event'), 400
 
-from flask import Flask, render_template, redirect, url_for
+# from flask import Flask, jsonify, redirect, 
+# import os
+
+# app = Flask(__name__, template_folder="templates")
+
+# @app.route('/services', methods=['POST'])
+# def redirect_detection():
+#     data = request.json
+#     if data and 'service' in data:
+#         service = data['service']
+#         if service == 'road_crack_detection':
+#             return redirect(os.getenv("ROAD_CRACK_DETECTION_URL"))
+#         elif service == 'building_crack_detection':
+#             return redirect(os.getenv("MERGED_CRACK_DETECTION_URL"))
+#         elif service == 'road_sign_detection':
+#             return redirect(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))
+    
+#     return jsonify(error='Invalid service'), 400
+
+# if __name__ == "__main__":
+#     app.run(debug=True, host="0.0.0.0", port=os.getenv("PORT"))
+
+from flask import Flask, render_template, request, redirect, jsonify
 import os
 
 app = Flask(__name__, template_folder="templates")
 
-@app.route('/services', methods=['GET'])
+@app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/road_crack_detection')
-def road_crack_detection():
-    print(os.getenv("ROAD_CRACK_DETECTION_URL"))  # Print the value of ROAD_CRACK_DETECTION_URL
-    return redirect(os.getenv("ROAD_CRACK_DETECTION_URL"))
-
-@app.route('/road_sign_detection')
-def road_sign_detection():
-    print(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))  # Print the value of ROAD_TRAFFIC_SIGN_DETECTION_URL
-    return redirect(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))
-
-@app.route('/building_crack_detection')
-def building_crack_detection():
-    print(os.getenv("MERGED_CRACK_DETECTION_URL"))  # Print the value of MERGED_CRACK_DETECTION_URL
-    return redirect(os.getenv("MERGED_CRACK_DETECTION_URL"))
+@app.route('/redirect_detection', methods=['POST'])
+def redirect_detection():
+    data = request.json
+    if data and 'service' in data:
+        service = data['service']
+        if service == 'road_crack_detection':
+            return redirect(os.getenv("ROAD_CRACK_DETECTION_URL"))
+        elif service == 'building_crack_detection':
+            return redirect(os.getenv("MERGED_CRACK_DETECTION_URL"))
+        elif service == 'road_sign_detection':
+            return redirect(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))
+    
+    return jsonify(error='Invalid service'), 400
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=os.getenv("PORT"))
-

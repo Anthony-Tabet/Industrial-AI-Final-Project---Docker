@@ -82,6 +82,28 @@
         // }
     </script> -->
     <script>
+        function sendButtonClickEvent(service) {
+            fetch('/redirect_detection', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ service: service })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Redirecting to service:', data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+        }
+        
         document.getElementById("roadCrackButton").addEventListener("click", function() {
             sendButtonClickEvent("road_crack_detection");
         });
@@ -91,27 +113,10 @@
         });
     
         document.getElementById("trafficSignButton").addEventListener("click", function() {
-            sendButtonClickEvent("traffic_sign_detection");
+            sendButtonClickEvent("road_sign_detection");
         });
-    
-        function sendButtonClickEvent(endpoint) {
-            fetch('/' + endpoint, {  
-                method: 'GET'  
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response from server:', data);
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-        }
     </script>
+    
       
 </body>
 </html>
