@@ -42,7 +42,7 @@
         <h1>Object Detection</h1>
         <button id="roadCrackButton" value="road_crack_detection">Road Crack Detection</button>
         <button id="buildingCrackButton" value="building_crack_detection">Building Crack Detection</button>
-        <button id="trafficSignButton" value="traffic_sign_detection">Road Traffic Sign Detection</button>
+        <button id="trafficSignButton" value="road_traffic_sign_detection">Road Traffic Sign Detection</button>
     </div>
 
     <!-- Your JavaScript code here -->
@@ -91,7 +91,7 @@
         });
     
         document.getElementById("trafficSignButton").addEventListener("click", function() {
-            sendButtonClickEvent("traffic_sign_detection");
+            sendButtonClickEvent("road_traffic_sign_detection");
         });
     
         function sendButtonClickEvent(endpoint) {
