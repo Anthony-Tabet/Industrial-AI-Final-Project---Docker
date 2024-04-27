@@ -8,7 +8,7 @@ import time
 app = Flask(__name__)
 
 def perform_object_detection(video_path):
-    model = YOLO(r'app/model/building_crack_detection.pt')
+    model = YOLO('building_crack_detection/model/building_crack_detection.pt')
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = model.to(device)
     current_time = time.strftime("%Y%m%d_%H%M%S")  # Get current timestamp
