@@ -47,39 +47,69 @@
 
     <!-- Your JavaScript code here -->
     <script>
+        // document.getElementById("roadCrackButton").addEventListener("click", function() {
+        //     sendButtonClickEvent("roadCrack");
+        // });
+
+        // document.getElementById("buildingCrackButton").addEventListener("click", function() {
+        //     sendButtonClickEvent("buildingCrack");
+        // });
+
+        // document.getElementById("trafficSignButton").addEventListener("click", function() {
+        //     sendButtonClickEvent("trafficSign");
+        // });
+
+        // function sendButtonClickEvent(buttonValue) {
+        //     fetch('/button_clicked', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({ buttonClicked: buttonValue })
+        //     })
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         console.log('Response from server:', data);
+        //     })
+        //     .catch(error => {
+        //         console.error('There was a problem with the fetch operation:', error);
+        //     });
+        // }
         document.getElementById("roadCrackButton").addEventListener("click", function() {
-            sendButtonClickEvent("roadCrack");
-        });
+    sendButtonClickEvent("roadCrack");
+});
 
-        document.getElementById("buildingCrackButton").addEventListener("click", function() {
-            sendButtonClickEvent("buildingCrack");
-        });
+document.getElementById("buildingCrackButton").addEventListener("click", function() {
+    sendButtonClickEvent("buildingCrack");
+});
 
-        document.getElementById("trafficSignButton").addEventListener("click", function() {
-            sendButtonClickEvent("trafficSign");
-        });
+document.getElementById("trafficSignButton").addEventListener("click", function() {
+    sendButtonClickEvent("trafficSign");
+});
 
-        function sendButtonClickEvent(buttonValue) {
-            fetch('/button_clicked', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ buttonClicked: buttonValue })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response from server:', data);
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
+function sendButtonClickEvent(buttonValue) {
+    fetch('/' + buttonValue + '_detection', {  // Changed endpoint to match Flask routes
+        method: 'GET'  // Changed method to GET since we're redirecting
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response from server:', data);
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+}
+
     </script>
 </body>
 </html>
