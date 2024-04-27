@@ -6,7 +6,7 @@ app = Flask(__name__, template_folder="templates")
 def index():
     return render_template('index.html')
 
-@app.route('/services', methods=['POST'])
+@app.route('/services', methods=['GET','POST'])
 def handle_button_click():
     data = request.json
     button_clicked = data.get('buttonClicked')
