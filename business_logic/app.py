@@ -41,17 +41,17 @@ def index():
 @app.route('/road_crack_detection')
 def road_crack_detection():
     # Redirect to the road crack detection service URL
-    return redirect("URL_FOR_ROAD_CRACK_DETECTION_SERVICE")
+    return redirect(os.getenv("ROAD_CRACK_DETECTION_URL"))
 
 @app.route('/road_sign_detection')
 def road_sign_detection():
     # Redirect to the road sign detection service URL
-    return redirect("URL_FOR_ROAD_SIGN_DETECTION_SERVICE")
+    return redirect(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))
 
 @app.route('/building_crack_detection')
 def building_crack_detection():
     # Redirect to the building crack detection service URL
-    return redirect("URL_FOR_BUILDING_CRACK_DETECTION_SERVICE")
+    return redirect(os.getenv("MERGED_CRACK_DETECTION_URL"))
 
 if __name__ == "__main__":
     app.run(debug=True,host = "0.0.0.0", port = os.getenv("PORT"))
