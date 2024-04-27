@@ -67,8 +67,10 @@ services:
       - PORT=5003
     volumes:
       - uploaded_videos_volume:/app/road_traffic_sign_detection/static
+      - model_path:/app/road_traffic_sign_detection/model
     restart: always
 
 
 volumes:
+  model_path:
   uploaded_videos_volume:
