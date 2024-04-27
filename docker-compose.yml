@@ -37,8 +37,6 @@ services:
       - PORT=5001
     restart: always
     
-
-
   detect-road-cracks-api:
     stdin_open: true
     tty: true
@@ -67,6 +65,10 @@ services:
       - api-network
     environment:
       - PORT=5003
+    volumes:
+      - uploaded_videos_volume:/app/road_traffic_sign_detection/static
     restart: always
 
 
+volumes:
+  uploaded_videos_volume:
