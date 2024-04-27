@@ -31,7 +31,8 @@
 #         return jsonify(error='Invalid button click event'), 400
 
 from flask import Flask, render_template, redirect, url_for
-import os 
+import os
+
 app = Flask(__name__, template_folder="templates")
 
 @app.route('/services', methods=['GET'])
@@ -40,18 +41,19 @@ def index():
 
 @app.route('/road_crack_detection')
 def road_crack_detection():
-    # Redirect to the road crack detection service URL
+    print(os.getenv("ROAD_CRACK_DETECTION_URL"))  # Print the value of ROAD_CRACK_DETECTION_URL
     return redirect(os.getenv("ROAD_CRACK_DETECTION_URL"))
 
 @app.route('/road_sign_detection')
 def road_sign_detection():
-    # Redirect to the road sign detection service URL
+    print(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))  # Print the value of ROAD_TRAFFIC_SIGN_DETECTION_URL
     return redirect(os.getenv("ROAD_TRAFFIC_SIGN_DETECTION_URL"))
 
 @app.route('/building_crack_detection')
 def building_crack_detection():
-    # Redirect to the building crack detection service URL
+    print(os.getenv("MERGED_CRACK_DETECTION_URL"))  # Print the value of MERGED_CRACK_DETECTION_URL
     return redirect(os.getenv("MERGED_CRACK_DETECTION_URL"))
 
 if __name__ == "__main__":
-    app.run(debug=True,host = "0.0.0.0", port = os.getenv("PORT"))
+    app.run(debug=True, host="0.0.0.0", port=os.getenv("PORT"))
+
