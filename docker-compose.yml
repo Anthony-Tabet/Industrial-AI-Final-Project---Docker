@@ -22,7 +22,7 @@ services:
       - ROAD_TRAFFIC_SIGN_DETECTION_URL=http://127.0.0.1:5003/TrafficSignDetection
     restart: always
 
-  detect-building-cracks-api:
+  detect-building-cracks:
     stdin_open: true
     tty: true
     build:
@@ -40,7 +40,7 @@ services:
       - ./building_crack_detection/model:/app/building_crack_detection/model        
     restart: always
     
-  detect-road-cracks-api:
+  detect-road-cracks:
     stdin_open: true
     tty: true
     build:
@@ -58,7 +58,7 @@ services:
       - ./road_crack_detection/model:/app/road_crack_detection/model  
     restart: always
 
-  detect-road-traffic-signs-api:
+  detect-road-traffic-signs:
     stdin_open: true
     tty: true
     build:
